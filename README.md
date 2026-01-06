@@ -182,7 +182,7 @@ The database consists of two main schema groups:
    - Board collaboration features
    - Reporting and analytics
 
-For detailed documentation about the database schema, relationships, and naming conventions, see the [Database Schema Documentation](docs/DATABASE_SCHEMA.md).
+For detailed documentation about the database schema, relationships, and naming conventions, see the [Database Schema Documentation](DATABASE_SCHEMA.md).
 
 # 🧩 Extensions
 
