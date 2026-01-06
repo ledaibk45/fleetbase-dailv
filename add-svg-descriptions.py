@@ -6,7 +6,13 @@ Adds title, description, and ARIA attributes for better accessibility.
 
 import sys
 import re
+import html
 from pathlib import Path
+
+
+def escape_xml(text):
+    """Escape XML special characters."""
+    return html.escape(text, quote=True)
 
 
 def add_svg_description(svg_path, title, description):
@@ -38,30 +44,33 @@ def add_svg_description(svg_path, title, description):
         print(f"Error: {svg_path} does not appear to be a valid SVG file")
         return False
     
-    # Create the title and description elements
-    title_element = f'<title>{title}</title>'
-    desc_element = f'<desc>{description}</desc>'
+    # Escape XML special characters in title and description
+    safe_title = escape_xml(title)
+    safe_description = escape_xml(description)
+    
+    # Create the title and description elements with IDs
+    title_element_with_id = f'<title id="svg-title">{safe_title}</title>'
+    desc_element_with_id = f'<desc id="svg-desc">{safe_description}</desc>'
     
     # Find the opening svg tag
-    svg_match = re.search(r'<svg[^>]*>', content)
+    svg_match = re.search(r'<svg([^>]*)>', content)
     if not svg_match:
         print(f"Error: Could not find SVG opening tag in {svg_path}")
         return False
     
     svg_tag = svg_match.group(0)
+    svg_attrs = svg_match.group(1)
     svg_tag_start = svg_match.start()
     svg_tag_end = svg_match.end()
     
     # Add role and aria-labelledby attributes if not present
-    new_svg_tag = svg_tag
-    if 'role=' not in new_svg_tag:
-        new_svg_tag = new_svg_tag.replace('<svg', '<svg role="img"', 1)
-    if 'aria-labelledby=' not in new_svg_tag:
-        new_svg_tag = new_svg_tag.replace('<svg', '<svg aria-labelledby="svg-title svg-desc"', 1)
+    new_svg_attrs = svg_attrs
+    if 'role=' not in new_svg_attrs:
+        new_svg_attrs = ' role="img"' + new_svg_attrs
+    if 'aria-labelledby=' not in new_svg_attrs:
+        new_svg_attrs = ' aria-labelledby="svg-title svg-desc"' + new_svg_attrs
     
-    # Add IDs to title and desc elements for aria-labelledby
-    title_element_with_id = f'<title id="svg-title">{title}</title>'
-    desc_element_with_id = f'<desc id="svg-desc">{description}</desc>'
+    new_svg_tag = f'<svg{new_svg_attrs}>'
     
     # Find the first <g> tag after svg
     g_match = re.search(r'<g[^>]*>', content[svg_tag_end:])
@@ -71,6 +80,7 @@ def add_svg_description(svg_path, title, description):
         # Look for existing title and desc within the SVG (not inside nested elements)
         # Remove old title and desc if they exist right after svg tag
         after_svg = content[svg_tag_end:g_start]
+        # Use more specific regex to handle nested elements correctly
         after_svg = re.sub(r'\s*<title[^>]*>.*?</title>\s*', '', after_svg, flags=re.DOTALL)
         after_svg = re.sub(r'\s*<desc[^>]*>.*?</desc>\s*', '', after_svg, flags=re.DOTALL)
         
