@@ -36,6 +36,9 @@ class IntegrationGeometry
         // Calculate the cross-sectional area (constant for cylinder)
         $crossSectionalArea = pi() * pow($radius, 2);
         
+        // Calculate middle step once to avoid repeated computation
+        $middleStep = intval($steps / 2);
+        
         // Numerical integration using Riemann sum (midpoint rule)
         for ($i = 0; $i < $steps; $i++) {
             // z position at the middle of each interval
@@ -49,13 +52,15 @@ class IntegrationGeometry
             $volume += $sliceVolume;
             
             // Store some sample steps for demonstration (first, middle, last)
-            if ($i === 0 || $i === intval($steps / 2) || $i === $steps - 1) {
+            // Note: cumulative_volume shows the actual accumulated volume at these specific steps
+            if ($i === 0 || $i === $middleStep || $i === $steps - 1) {
                 $integrationSteps[] = [
                     'step' => $i + 1,
                     'z_position' => round($z, 4),
                     'cross_sectional_area' => round($areaAtZ, 4),
                     'slice_volume' => round($sliceVolume, 6),
-                    'cumulative_volume' => round($volume, 4)
+                    'cumulative_volume' => round($volume, 4),
+                    'progress_percentage' => round((($i + 1) / $steps) * 100, 2)
                 ];
             }
         }

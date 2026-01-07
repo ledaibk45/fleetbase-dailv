@@ -36,17 +36,18 @@ echo "📏 Độ dày mỗi lát cắt (Δz): {$numericalResult['delta_z']} cm\n
 echo "⭕ Diện tích mặt cắt ngang: {$numericalResult['cross_sectional_area']} cm²\n\n";
 
 echo "📝 Một số bước tính toán mẫu / Sample Integration Steps:\n\n";
-printf("%-10s %-15s %-20s %-20s %-15s\n", "Bước", "Vị trí z (cm)", "Diện tích A(z)", "Thể tích lát", "Tích lũy");
-printf("%-10s %-15s %-20s %-20s %-15s\n", "Step", "", "(cm²)", "(cm³)", "(cm³)");
-echo str_repeat("-", 80) . "\n";
+printf("%-10s %-15s %-20s %-20s %-15s %-12s\n", "Bước", "Vị trí z (cm)", "Diện tích A(z)", "Thể tích lát", "Tích lũy", "Tiến độ");
+printf("%-10s %-15s %-20s %-20s %-15s %-12s\n", "Step", "", "(cm²)", "(cm³)", "(cm³)", "(%)");
+echo str_repeat("-", 92) . "\n";
 
 foreach ($numericalResult['sample_steps'] as $step) {
-    printf("%-10d %-15.4f %-20.4f %-20.6f %-15.4f\n",
+    printf("%-10d %-15.4f %-20.4f %-20.6f %-15.4f %-12s\n",
         $step['step'],
         $step['z_position'],
         $step['cross_sectional_area'],
         $step['slice_volume'],
-        $step['cumulative_volume']
+        $step['cumulative_volume'],
+        $step['progress_percentage'] . '%'
     );
 }
 

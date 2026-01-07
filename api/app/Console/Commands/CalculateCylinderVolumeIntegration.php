@@ -12,8 +12,8 @@ class CalculateCylinderVolumeIntegration extends Command
      *
      * @var string
      */
-    protected $signature = 'geometry:cylinder-volume-integration 
-                            {radius=2 : Radius of the cylinder in cm} 
+    protected $signature = 'geometry:cylinder-volume-integration
+                            {radius=2 : Radius of the cylinder in cm}
                             {height=10 : Height of the cylinder in cm}
                             {--steps=1000 : Number of integration steps for numerical method}
                             {--method=both : Method to use (numerical, analytical, or both)}';
@@ -83,7 +83,7 @@ class CalculateCylinderVolumeIntegration extends Command
         $this->info("📝 Một số bước tính toán mẫu / Sample Integration Steps:");
         $this->newLine();
 
-        $headers = ['Bước/Step', 'Vị trí z (cm)', 'Diện tích A(z) (cm²)', 'Thể tích lát (cm³)', 'Tích lũy (cm³)'];
+        $headers = ['Bước/Step', 'Vị trí z (cm)', 'Diện tích A(z) (cm²)', 'Thể tích lát (cm³)', 'Tích lũy (cm³)', 'Tiến độ (%)'];
         $rows = [];
 
         foreach ($result['sample_steps'] as $step) {
@@ -92,7 +92,8 @@ class CalculateCylinderVolumeIntegration extends Command
                 $step['z_position'],
                 $step['cross_sectional_area'],
                 $step['slice_volume'],
-                $step['cumulative_volume']
+                $step['cumulative_volume'],
+                $step['progress_percentage'] . '%'
             ];
         }
 
