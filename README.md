@@ -206,11 +206,11 @@ Get updates on Fleetbase's development and chat with the project maintainers and
 ## Creators
 
 <p dir="auto"><strong>Ronald A. Richardson</strong>- Co-founder &amp; CTO</p>
-<img src="https://user-images.githubusercontent.com/58805033/230263021-212f2553-1269-473d-be94-313cb3eecfa5.png" alt="Ron Image" width="75" height="75" style="max-width: 100%;">          
+<img src="https://user-images.githubusercontent.com/58805033/230263021-212f2553-1269-473d-be94-313cb3eecfa5.png" alt="Profile photo of Ronald A. Richardson, Co-founder and CTO of Fleetbase" width="75" height="75" style="max-width: 100%;">          
 <p><a href="https://github.com/orgs/fleetbase/people/roncodes">Github</a> | <a href="https://www.linkedin.com/in/ronald-a-richardson/">LinkedIn</a></p>
                    
 <p dir="auto"><strong>Shiv Thakker</strong> - Co-founder &amp; CEO</p>
-<img src="https://user-images.githubusercontent.com/58805033/230262598-1ce6d0cc-fb65-41f9-8384-5cf5cbf369c7.png" alt="Shiv Image" width="75" height="75" style="max-width: 100%;">  
+<img src="https://user-images.githubusercontent.com/58805033/230262598-1ce6d0cc-fb65-41f9-8384-5cf5cbf369c7.png" alt="Profile photo of Shiv Thakker, Co-founder and CEO of Fleetbase" width="75" height="75" style="max-width: 100%;">  
 <p><a href="https://github.com/orgs/fleetbase/people/shivthakker">Github</a> | <a href="https://www.linkedin.com/in/shivthakker/">LinkedIn</a></p>
 
 
