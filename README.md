@@ -40,6 +40,7 @@ cd fleetbase && ./scripts/docker-install.sh
   - [Features](#-features)
   - [Install](#-install)
   - [Deploy on AWS](#-deploy-on-aws-in-one-click)
+  - [Database Schema](#-database-schema)
   - [Extensions](#-extensions)
   - [Apps](#-apps)
   - [Roadmap](#-roadmap)
@@ -148,7 +149,42 @@ Your AWS deployment includes a complete, production-ready infrastructure stack:
 
 [**🚀 Deploy Now**](https://console.fleetbase.io/aws-marketplace) | [**📖 Learn More**](https://docs.fleetbase.io/category/deploying/aws)
 
-# 🧩 Extensions 
+## 📊 Database Schema
+
+Fleetbase uses a comprehensive database schema designed to support logistics and supply chain operations. The schema is visualized through Entity Relationship Diagrams (ERDs) that show all tables, relationships, and data types.
+
+### Entity Relationship Diagrams
+
+<p align="center" dir="auto">
+  <img src="erd.svg" alt="Fleetbase Database Schema - Entity Relationship Diagram" width="100%" style="max-width: 100%;" />
+</p>
+
+**Available themes:**
+- [Light theme ERD](erd.svg) - Standard white background version
+- [Dark theme ERD](erd-dark.svg) - Optimized for dark mode viewing
+
+### Schema Overview
+
+The database consists of two main schema groups:
+
+1. **Core Fleetbase Schema** (`fleetbase_*`) - Supports fundamental logistics operations including:
+   - Companies, users, roles, and permissions
+   - Fleet management (drivers, vehicles, fleets)
+   - Order and tracking management
+   - Service areas, rates, and quotes
+   - API integrations and webhooks
+   - Storefront and e-commerce functionality
+
+2. **FixFlo Extension Schema** (`fixflo_*`) - Specialized functionality for maritime fixture management:
+   - Fixtures and fixture sets
+   - Vessel information
+   - Ports, zones, and cargo grades
+   - Board collaboration features
+   - Reporting and analytics
+
+For detailed documentation about the database schema, relationships, and naming conventions, see the [Database Schema Documentation](DATABASE_SCHEMA.md).
+
+# 🧩 Extensions
 
 Extensions are modular components that enhance the functionality of your Fleetbase instance. They allow you to add new features, customize existing behavior, or integrate with external systems.
 

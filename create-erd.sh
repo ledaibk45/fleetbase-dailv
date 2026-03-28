@@ -11,3 +11,7 @@ schemacrawler.sh --server mysql --host localhost --database fleetbase --user roo
 # Generate a SVG ERD diagram using `dark` theme
 # To use mmdc see https://github.com/mermaid-js/mermaid-cli
 mmdc -i database.mmd -o erd-dark.svg -t dark -b transparent --configFile="mmdc.json"
+
+# Add accessibility descriptions to SVG files
+echo "Adding accessibility descriptions to SVG files..."
+python3 add-svg-descriptions.py
